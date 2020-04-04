@@ -291,7 +291,7 @@ class Mp3Info {
             // The faster way to detect audio duration:
             $samples_in_second = $this->layerVersion == 1 ? self::LAYER_1_FRAME_SIZE : self::LAYERS_23_FRAME_SIZE;
             // for VBR: adjust samples in second according to VBR quality
-            if ($this->isVbr && isset($this->vbrProperties['quality'])) {
+            if ($this->isVbr && isset($this->vbrProperties['quality']) && $this->vbrProperties['quality'] > 0) {
                 $samples_in_second = floor($samples_in_second * $this->vbrProperties['quality'] / 100);
             }
             // Calculate total number of audio samples (framesCount * sampleInFrameCount) / samplesInSecondCount
